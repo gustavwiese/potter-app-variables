@@ -4,31 +4,124 @@
 window.addEventListener("load", initApp);
 
 function initApp() {
-    // Harry Potter
-    const potterName = "Harry Potter";
-    const potterHouse = "Gryffindor";
-    const potterDateOfBirth = "31-07-1980";
-    const potterActor = "Daniel Radcliffe";
-    const potterImage = "http://hp-api.herokuapp.com/images/harry.jpg";
+  const harry = {
+    name: "Harry Potter",
+    species: "human",
+    gender: "male",
+    house: "Gryffindor",
+    dateOfBirth: "31-07-1980",
+    yearOfBirth: 1980,
+    ancestry: "half-blood",
+    eyeColour: "green",
+    hairColour: "black",
+    wand: "holly,phoenix feather,11",
+    patronus: "stag",
+    hogwartsStudent: true,
+    hogwartsStaff: false,
+    actor: "Daniel Radcliffe",
+    alive: true,
+    image: "http://hp-api.herokuapp.com/images/harry.jpg",
+  };
 
-    showCharacter(potterImage, potterName, potterHouse, potterDateOfBirth, potterActor);
-    showCharacter("http://hp-api.herokuapp.com/images/hermione.jpeg", "Hermione Granger", "Gryffindor", "19-09-1979", "Emma Watson");
-    showCharacter("http://hp-api.herokuapp.com/images/ron.jpg", "Ron Weasley", "Gryffindor", "01-03-1980", "Rupert Grint");
+  const hermione = {
+    name: "Hermione Granger",
+    species: "human",
+    gender: "female",
+    house: "Gryffindor",
+    dateOfBirth: "19-09-1979",
+    yearOfBirth: 1979,
+    ancestry: "muggleborn",
+    eyeColour: "brown",
+    hairColour: "brown",
+    wand: "vine,dragon heartstring",
+    patronus: "otter",
+    hogwartsStudent: true,
+    hogwartsStaff: false,
+    actor: "Emma Watson",
+    alive: true,
+    image: "http://hp-api.herokuapp.com/images/hermione.jpeg",
+  };
+
+  const ron = {
+    name: "Ron Weasley",
+    species: "human",
+    gender: "male",
+    house: "Gryffindor",
+    dateOfBirth: "01-03-1980",
+    yearOfBirth: 1980,
+    ancestry: "pure-blood",
+    eyeColour: "blue",
+    hairColour: "red",
+    wand: "willow,unicorn tail-hair,14",
+    patronus: "Jack Russell terrier",
+    hogwartsStudent: true,
+    hogwartsStaff: false,
+    actor: "Rupert Grint",
+    alive: true,
+    image: "http://hp-api.herokuapp.com/images/ron.jpg",
+  };
+
+  const draco = {
+    name: "Draco Malfoy",
+    species: "human",
+    gender: "male",
+    house: "Slytherin",
+    dateOfBirth: "05-06-1980",
+    yearOfBirth: 1980,
+    ancestry: "pure-blood",
+    eyeColour: "grey",
+    hairColour: "blonde",
+    wand: "hawthorn,unicorn tail-hair,10",
+    patronus: "",
+    hogwartsStudent: true,
+    hogwartsStaff: false,
+    actor: "Tom Felton",
+    alive: true,
+    image: "http://hp-api.herokuapp.com/images/draco.jpg",
+  };
+
+  const severus = {
+    name: "Severus Snape",
+    species: "human",
+    gender: "male",
+    house: "Slytherin",
+    dateOfBirth: "09-01-1960",
+    yearOfBirth: 1960,
+    ancestry: "half-blood",
+    eyeColour: "black",
+    hairColour: "black",
+    wand: "",
+    patronus: "doe",
+    hogwartsStudent: false,
+    hogwartsStaff: true,
+    actor: "Alan Rickman",
+    alive: false,
+    image: "http://hp-api.herokuapp.com/images/snape.jpg",
+  };
+
+  showCharacter(harry);
+  showCharacter(ron);
+  showCharacter(hermione);
+  showCharacter(draco);
+  showCharacter(severus);
 }
 
-function showCharacter(image, name, house, dateOfBirth, actor) {
-    document.querySelector("#characters").insertAdjacentHTML(
-        "beforeend",
-        /*html*/ `
+function showCharacter(character) {
+  console.log(character);
+  document.querySelector("#characters").insertAdjacentHTML(
+    "beforeend",
+    /*html*/ `
             <article class="grid-item">
-                <img src="${image}">
-                <h2>${name}</h2>
-                <p>${house}</p>
-                <p>Date of Birth: ${dateOfBirth}</p>
-                <p>Played by ${actor}</p>
+                <img src="${character.image}">
+                <h2>${character.name}</h2>
+                <p>${character.house}</p>
+                <p>Date of Birth: ${character.dateOfBirth}</p>
+                <p>Played by ${character.actor}</p>
             </article>
         `
-    );
+  );
+  document.querySelector("#character article:last-child").addEventListener("click", characterClicked);
+  
 }
 
 // function showCharacter(image, name, house, dateOfBirth, actor) {
