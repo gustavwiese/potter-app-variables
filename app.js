@@ -107,7 +107,6 @@ function initApp() {
 }
 
 function showCharacter(character) {
-  console.log(character);
   document.querySelector("#characters").insertAdjacentHTML(
     "beforeend",
     /*html*/ `
@@ -120,8 +119,6 @@ function showCharacter(character) {
             </article>
         `
   );
-  document.querySelector("#character article:last-child").addEventListener("click", characterClicked);
-  
 }
 
 // function showCharacter(image, name, house, dateOfBirth, actor) {
